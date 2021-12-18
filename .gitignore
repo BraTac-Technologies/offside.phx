@@ -32,3 +32,5 @@ offside_phx-*.tar
 npm-debug.log
 /assets/node_modules/
 
+/config/.env
+
