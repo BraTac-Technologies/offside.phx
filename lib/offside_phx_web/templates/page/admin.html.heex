@@ -41,7 +41,7 @@
             <i class="fas fa-bars"></i></button>
           <a
             class="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
-            href="javascript:void(0)"
+            href="/posts"
           >
             Offside24.net
           </a>
@@ -333,13 +333,16 @@
                           Title
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                          Start date
+                          Pre-info
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                          Created in
+                          Inserted at
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                          Players in Tour
+                          Updated at
+                        </th>
+                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                          has_tags?
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-right">
                           Admin
@@ -347,28 +350,32 @@
                       </tr>
                     </thead>
                     <tbody>
-                      
+                      <%= for post <- @posts do %>
                         <tr>
                           <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
                             <%# link tour.title , to: Routes.live_path(@socket, TennisPhxWeb.AdminTourLive, tour) %>
-                            20
+                            <%= post.title %>
                           </th>
                           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                            30
+                            <%= post.info %>
                           </td>
                           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                            40
+                            <%= post.inserted_at %>
                           </td>
                           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                             <i class="fas fa-arrow-up text-green-500 mr-4"></i>
-                            50
+                            <%= post.updated_at %>
+                          </td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                            <i class="fas fa-arrow-up text-green-500 mr-4"></i>
+                            0
                           </td>
                           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-right">
-                            <%# link "Edit", to: Routes.tour_path(@socket, :edit, tour) %> |
-                            <%# link "Delete", to: Routes.tour_path(@socket, :delete, tour), method: :delete, data: [confirm: "Are you sure?"] %>
+                            <%= link "Edit", to: Routes.post_path(@conn, :edit, post) %> |
+                            <%= link "Delete", to: Routes.post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"] %>
                           </td>
                         </tr>
-                      
+                      <% end %>
 
                     </tbody>
                   </table>
