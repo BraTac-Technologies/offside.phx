@@ -18,6 +18,7 @@ defmodule OffsidePhxWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/admin", PageController, :admin
     resources "/posts", PostController
   end
 
