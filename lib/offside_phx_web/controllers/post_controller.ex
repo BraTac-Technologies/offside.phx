@@ -4,10 +4,12 @@ defmodule OffsidePhxWeb.PostController do
   alias OffsidePhx.Posts
   alias OffsidePhx.Posts.Post
   alias OffsidePhx.Tags
+  alias OffsidePhx.Repo
 
   def index(conn, _params) do
     posts = Posts.list_posts()
-    render(conn, "index.html", posts: posts)
+    tags = Tags.list_tags()
+    render(conn, "index.html", posts: posts, tags: tags)
   end
 
   def new(conn, _params) do
@@ -28,7 +30,7 @@ defmodule OffsidePhxWeb.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    post = Posts.get_post!(id)
+    post = Posts.get_post!(id) |> Repo.preload(:tag)
     last3_posts = Posts.get_last_3_posts()
     render(conn, "show.html", post: post, last3_posts: last3_posts)
   end
