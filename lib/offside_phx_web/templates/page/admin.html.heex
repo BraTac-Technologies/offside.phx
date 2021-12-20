@@ -22,7 +22,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
     />
-    
+
   </head>
   <body class="text-gray-800 antialiased">
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -146,7 +146,7 @@
                 />
               </div>
             </form>
-            
+
             <hr class="my-4 md:min-w-full" />
             <h6
               class="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
@@ -242,7 +242,7 @@
             <div>
               <!-- Card stats -->
               <div class="flex flex-wrap">
-                
+
                 <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
                   <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
                     <div class="flex-auto p-4">
@@ -272,7 +272,7 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
                   <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
                     <div class="flex-auto p-4">
@@ -320,7 +320,7 @@
                     </div>
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
 
-                      <%# link "New Tour", to: Routes.tour_path(@socket, :new), class: "bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1" %>
+                      <%= link "New Post", to: Routes.post_path(@conn, :new), class: "bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1" %>
                     </div>
                   </div>
                 </div>
@@ -381,7 +381,7 @@
                   </table>
                 </div>
               </div>
-                          
+
 
             </div>  <!-- -->
             <div class="w-full xl:w-4/12 px-4">
@@ -395,7 +395,7 @@
                     </div>
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
 
-                      <%# link "New Phase", to: Routes.phase_path(@socket, :new), class: "bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1" %>
+                      <%= link "New Tag", to: Routes.tag_path(@conn, :new), class: "bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1" %>
                     </div>
                   </div>
                 </div>
@@ -407,8 +407,9 @@
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
                           Name
                         </th>
-                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                          Created in
+
+                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-center">
+                          has_posts?
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-right">
                           Admin
@@ -417,28 +418,29 @@
                       </tr>
                     </thead>
                     <tbody>
-                      
+                      <%= for tag <- @tags do %>
                         <tr>
                           <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                            50
+                            <%= tag.name %>
                           </th>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                            60
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-center">
+                            0
                           </td>
                           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-right">
-                            60
+                            <%= link "Edit", to: Routes.tag_path(@conn, :edit, tag) %> |
+                            <%= link "Delete", to: Routes.tag_path(@conn, :delete, tag), method: :delete, data: [confirm: "Are you sure?"] %>
                           </td>
 
                         </tr>
-                      
+                        <% end %>
 
                     </tbody>
                   </table>
                 </div>
               </div>
-              
+
             </div>
-            
+
           </div>
           <footer class="block py-4">
             <div class="container mx-auto px-4">
