@@ -20,6 +20,7 @@ defmodule OffsidePhxWeb.Router do
     get "/", PageController, :index
     get "/admin", PageController, :admin
     resources "/posts", PostController
+    resources "/tags", TagController
   end
 
   # Other scopes may use custom stacks.
