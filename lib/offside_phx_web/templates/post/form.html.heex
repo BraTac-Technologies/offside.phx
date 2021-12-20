@@ -22,15 +22,15 @@
             Title
           </label>
           <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <%= text_input f, :title, class: " bg-gray-200 max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-red-300 rounded-md" %>            
+            <%= text_input f, :title, class: " bg-gray-200 max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-red-300 rounded-md" %>
           </div>
         </div>
         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
             Info
           </label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">          
-            <%= text_input f, :info, class: " bg-gray-200 max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-red-300 rounded-md" %>            
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <%= text_input f, :info, class: " bg-gray-200 max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-red-300 rounded-md" %>
           </div>
         </div>
 
@@ -40,8 +40,17 @@
           </label>
           <div class="mt-1 sm:mt-0 sm:col-span-2">
             <%= textarea f, :text, class: "max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md" %>
-            
+
             <p class="mt-2 text-sm text-gray-500">Write a few sentences about yourself.</p>
+          </div>
+        </div>
+
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+            Choose Tag
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <%= select(f, :tag_id, Enum.map(@tags, &{&1.name, &1.id}), prompt: [key: "Choose a tag"], class: "text-center block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500") %>
           </div>
         </div>
 
@@ -72,12 +81,12 @@
         </div>
       </div>
     </div>
-        
+
   </div>
 
   <div class="pt-5">
     <div class="flex justify-end">
-          
+
       <%= submit "Save", class: "ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
     </div>
   </div>

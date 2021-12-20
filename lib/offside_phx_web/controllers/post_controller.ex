@@ -3,6 +3,7 @@ defmodule OffsidePhxWeb.PostController do
 
   alias OffsidePhx.Posts
   alias OffsidePhx.Posts.Post
+  alias OffsidePhx.Tags
 
   def index(conn, _params) do
     posts = Posts.list_posts()
@@ -34,8 +35,9 @@ defmodule OffsidePhxWeb.PostController do
 
   def edit(conn, %{"id" => id}) do
     post = Posts.get_post!(id)
+    tags = Tags.list_tags()
     changeset = Posts.change_post(post)
-    render(conn, "edit.html", post: post, changeset: changeset)
+    render(conn, "edit.html", post: post, changeset: changeset, tags: tags)
   end
 
   def update(conn, %{"id" => id, "post" => post_params}) do
