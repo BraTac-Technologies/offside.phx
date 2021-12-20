@@ -123,8 +123,8 @@ Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
 						<p class="text-gray-600 text-xs md:text-base">Developer, Owner & Author in this website</p>
 					</div>
 					<div class="justify-end">
-            <%= link to: Routes.post_path(@conn, :index) do %>
-						<button class="bg-transparent border border-gray-500 hover:border-green-500 text-xs text-gray-500 hover:text-green-500 font-bold py-2 px-4 rounded-full">See all articles</button>
+            <%= link to: Routes.post_path(@conn, :edit, @post) do %>
+						<button class="bg-transparent border border-gray-500 hover:border-green-500 text-xs text-gray-500 hover:text-green-500 font-bold py-2 px-4 rounded-full">ADMIN EDIT</button>
             <% end %>
           </div>
 				</div>
