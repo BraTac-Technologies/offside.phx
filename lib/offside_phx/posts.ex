@@ -22,6 +22,11 @@ defmodule OffsidePhx.Posts do
     Repo.all(query)
   end
 
+  def get_last_3_posts do
+    query = from(p in Post, order_by: [desc: p.inserted_at])
+    Repo.all(query) |> Enum.take(3)
+  end
+
 
   @doc """
   Gets a single post.

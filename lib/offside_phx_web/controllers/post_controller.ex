@@ -28,7 +28,8 @@ defmodule OffsidePhxWeb.PostController do
 
   def show(conn, %{"id" => id}) do
     post = Posts.get_post!(id)
-    render(conn, "show.html", post: post)
+    last3_posts = Posts.get_last_3_posts()
+    render(conn, "show.html", post: post, last3_posts: last3_posts)
   end
 
   def edit(conn, %{"id" => id}) do
