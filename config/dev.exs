@@ -36,6 +36,9 @@ config :offside_phx, OffsidePhxWeb.Endpoint,
 
   ]
 
+config :waffle,
+  storage: Waffle.Storage.Local
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
