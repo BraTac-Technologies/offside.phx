@@ -78,8 +78,11 @@
 	</div>
 
 	<!--image-->
-	<div class="container shadow-inner w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded" style="background-image:url('https://source.unsplash.com/collection/494263/800x600/'); height: 75vh;"></div>
+	<!-- <div class="container shadow-inner w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded" style="background-image:url('https://source.unsplash.com/collection/494263/800x600/'); height: 75vh;"></div> -->
+<div class="container shadow-inner w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded">
 
+ <%= img_tag OffsidePhx.BannerUploader.url({@post.banner, @post}, signed: true) %>
+</div>
 	<!--Container-->
 	<div class="container max-w-5xl mx-auto -mt-32">
 
