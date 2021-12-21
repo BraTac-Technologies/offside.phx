@@ -49,7 +49,8 @@ defmodule OffsidePhx.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:phx_gen_tailwind, "~> 0.1.3", only: :dev}
+      {:phx_gen_tailwind, "~> 0.1.3", only: :dev},
+      {:waffle, "~> 1.1.0"}
     ]
   end
 
