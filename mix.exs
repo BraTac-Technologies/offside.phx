@@ -50,7 +50,8 @@ defmodule OffsidePhx.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:phx_gen_tailwind, "~> 0.1.3", only: :dev},
-      {:waffle, "~> 1.1.0"}
+      {:waffle, "~> 1.1.5"},
+      {:waffle_ecto, "~> 0.0.11"}
     ]
   end
 

@@ -20,12 +20,8 @@ defmodule OffsidePhx.Posts.Post do
   def changeset(post, attrs) do
     post
     |> cast(attrs, [:title, :info, :text, :tag_id])
+    |> cast_attachments(attrs, [:banner])
     |> validate_required([:title, :info, :text])
   end
 
-  def banner_changeset(post, attrs) do
-    post
-    |> cast(attrs, [])
-    |> cast_attachments(attrs, [:banner])
-  end
 end

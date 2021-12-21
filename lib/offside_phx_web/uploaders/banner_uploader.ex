@@ -2,9 +2,9 @@ defmodule OffsidePhx.BannerUploader do
   use Waffle.Definition
 
   # Include ecto support (requires package waffle_ecto installed):
-  # use Waffle.Ecto.Definition
+  use Waffle.Ecto.Definition
 
-  @versions [:original]
+  # @versions [:original]
 
   # To add a thumbnail version:
   # @versions [:original, :thumb]
@@ -17,7 +17,7 @@ defmodule OffsidePhx.BannerUploader do
   # Whitelist file extensions:
   def validate({file, _}) do
     file_extension = file.file_name |> Path.extname() |> String.downcase()
-  
+
     case Enum.member?(~w(.jpg .jpeg .gif .png), file_extension) do
       true -> :ok
       false -> {:error, "invalid file type"}
