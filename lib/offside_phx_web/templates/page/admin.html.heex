@@ -339,7 +339,7 @@
                           Inserted at
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                          Updated at
+                          Banner
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
                           has_tags?
@@ -364,7 +364,11 @@
                           </td>
                           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                             <i class="fas fa-arrow-up text-green-500 mr-4"></i>
-                            <%= post.updated_at %>
+                            <%= if is_nil(post.banner) do %>
+                            -
+                            <% else %>
+                            +
+                            <% end %>
                           </td>
                           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                             <i class="fas fa-arrow-up text-green-500 mr-4"></i>
