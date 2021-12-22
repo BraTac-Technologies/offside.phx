@@ -1,5 +1,5 @@
 
-<.form let={f} for={@changeset} action={@action}>
+  <%= form_for @changeset, @action, [multipart: true], fn f -> %>
 <%= if @changeset.action do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below.</p>
@@ -54,6 +54,15 @@
           </div>
         </div>
 
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+            Upload banner
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            
+          </div>
+        </div>
+
 
         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label for="cover-photo" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
@@ -68,7 +77,8 @@
                 <div class="flex text-sm text-gray-600">
                   <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                     <span>Upload a file</span>
-                    <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                    <%= file_input f, :banner, class: "" %>
+
                   </label>
                   <p class="pl-1">or drag and drop</p>
                 </div>
@@ -90,4 +100,4 @@
       <%= submit "Save", class: "ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
     </div>
   </div>
-</.form>
+<% end %>

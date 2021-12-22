@@ -27,6 +27,16 @@ defmodule OffsidePhx.Posts do
     Repo.all(query) |> Enum.take(3)
   end
 
+  def update_post_banner(%Post{} = post, attrs) do
+    post
+    |> Post.banner_changeset(attrs)
+    |> Repo.update()
+  end
+
+def change_post_banner(%Post{} = post) do
+  Post.banner_changeset(post, %{})
+end
+
 
   @doc """
   Gets a single post.
