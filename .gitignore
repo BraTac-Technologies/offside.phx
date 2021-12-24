@@ -34,3 +34,4 @@ npm-debug.log
 
 /config/.env
 /uploads
+/.elixir_ls
