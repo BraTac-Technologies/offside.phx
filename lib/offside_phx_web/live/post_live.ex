@@ -20,7 +20,7 @@ defmodule OffsidePhxWeb.PostLive do
       )
     socket =
       socket
-      |> assign(limit: 3)
+      |> assign(limit: 8)
       |> load_posts_more()
 
     {:ok, socket, temporary_assigns: [posts_more: []]}
