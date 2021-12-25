@@ -41,7 +41,7 @@
 								</li>
                 <%= for tag <- @tags do %>
 								<li class="mr-2">
-                <%= link tag.name, to: Routes.tag_path(@conn, :show, tag), class: "inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-2" %>
+                <%= link tag.name, to: Routes.tag_path(@socket, :show, tag), class: "inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-2" %>
 								</li>
 								<% end %>
 							</ul>
@@ -69,7 +69,7 @@
 
 				<div class="flex h-full bg-white rounded overflow-hidden shadow-lg hover:shadow-2xl">
 
-					<%= link to: Routes.post_path(@conn, :show, post), class: "flex flex-wrap no-underline hover:no-underline" do %>
+					<%= link to: Routes.post_path(@socket, :show, post), class: "flex flex-wrap no-underline hover:no-underline" do %>
 						<div class="w-full md:w-2/3 rounded-t">
 							<!-- <img src="https://source.unsplash.com/collection/494263/800x600" class="h-full w-full shadow"> -->
               <%= img_tag OffsidePhx.BannerUploader.url({post.banner, post}, signed: true, class: "h-full w-full shadow") %>
@@ -102,7 +102,8 @@
 
 
 				<!--Posts Container-->
-				<div class="flex flex-wrap justify-between pt-12 -mx-6">
+				<!-- <div id="posts" phx-update="append" class="flex flex-wrap justify-between pt-12 -mx-6"> -->
+          <div class="flex flex-wrap justify-between pt-12 -mx-6">
 
 					<!--1/3 col -->
 
@@ -113,7 +114,7 @@
 
 					<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
 						<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg hover:shadow-2xl">
-							<%= link to: Routes.post_path(@conn, :show, post), class: "flex flex-wrap no-underline hover:no-underline" do %>
+							<%= link to: Routes.post_path(@socket, :show, post), class: "flex flex-wrap no-underline hover:no-underline" do %>
 								<!-- <img src="https://source.unsplash.com/collection/225/800x600" class="h-64 w-full rounded-t pb-6"> -->
                 <%= img_tag OffsidePhx.BannerUploader.url({post.banner, post}, signed: true, class: "h-full w-full shadow"), class: "h-64 w-full rounded-t pb-6" %>
 								<p class="w-full text-gray-600 text-xs md:text-sm px-6"><%= post.title%></p>
@@ -148,7 +149,7 @@
 
 					<div class="w-full md:w-1/2 p-6 flex flex-col flex-grow flex-shrink">
 						<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg hover:shadow-2xl">
-							<%= link to: Routes.post_path(@conn, :show, post), class: "flex flex-wrap no-underline hover:no-underline" do %>
+							<%= link to: Routes.post_path(@socket, :show, post), class: "flex flex-wrap no-underline hover:no-underline" do %>
 								<!-- <img src="https://source.unsplash.com/collection/3657445/800x600" class="h-full w-full rounded-t pb-6"> -->
                 <%= img_tag OffsidePhx.BannerUploader.url({post.banner, post}, signed: true, class: "h-full w-full shadow"), class: "h-full w-full rounded-t pb-6" %>
                 <p class="w-full text-gray-600 text-xs md:text-sm px-6">GETTING STARTED</p>
@@ -176,7 +177,7 @@
 					<!--2/3 col -->
 					<div class="w-full md:w-2/3 p-6 flex flex-col flex-grow flex-shrink">
 						<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg hover:shadow-2xl">
-							<%= link to: Routes.post_path(@conn, :show, post), class: "flex flex-wrap no-underline hover:no-underline" do %>
+							<%= link to: Routes.post_path(@socket, :show, post), class: "flex flex-wrap no-underline hover:no-underline" do %>
 								<!-- <img src="https://source.unsplash.com/collection/325867/800x600" class="h-full w-full rounded-t pb-6"> -->
                 <%= img_tag OffsidePhx.BannerUploader.url({post.banner, post}, signed: true, class: "h-full w-full shadow"), class: "h-full w-full rounded-t pb-6" %>
                 <p class="w-full text-gray-600 text-xs md:text-sm px-6">GETTING STARTED</p>
@@ -201,7 +202,7 @@
 					<!--1/3 col -->
 					<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
 						<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg hover:shadow-2xl">
-							<%= link to: Routes.post_path(@conn, :show, post), class: "flex flex-wrap no-underline hover:no-underline" do %>
+							<%= link to: Routes.post_path(@socket, :show, post), class: "flex flex-wrap no-underline hover:no-underline" do %>
 								<!-- <img src="https://source.unsplash.com/collection/1118905/800x600" class="h-full w-full rounded-t pb-6"> -->
                 <%= img_tag OffsidePhx.BannerUploader.url({post.banner, post}, signed: true, class: "h-full w-full shadow"), class: "h-full w-full rounded-t pb-6" %>
                 <p class="w-full text-gray-600 text-xs md:text-sm px-6">GETTING STARTED</p>
@@ -221,9 +222,35 @@
 
 					<% end %>
 
-					<%= if index > 7 do %>
-					<% end %>
 				<% end) %>
+
+        <%= @posts_more |> Enum.with_index |> Enum.map(fn({post, index}) ->  %>
+
+        <%= if index > 7 do %>
+
+          <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg hover:shadow-2xl">
+              <%= link to: Routes.post_path(@socket, :show, post), class: "flex flex-wrap no-underline hover:no-underline" do %>
+                <!-- <img src="https://source.unsplash.com/collection/225/800x600" class="h-64 w-full rounded-t pb-6"> -->
+                <%= img_tag OffsidePhx.BannerUploader.url({post.banner, post}, signed: true, class: "h-full w-full shadow"), class: "h-64 w-full rounded-t pb-6" %>
+                <p class="w-full text-gray-600 text-xs md:text-sm px-6"><%= post.title%></p>
+                <div class="w-full font-bold text-xl text-gray-900 px-6">POSTS_MORE - Id = <%= post.id %>, INDEX = <%= index %></div>
+                <p class="text-gray-800 font-serif text-base px-6 mb-5">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+                </p>
+              <% end %>
+            </div>
+            <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
+              <div class="flex items-center justify-between">
+                <img class="w-8 h-8 rounded-full mr-4 avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
+                <p class="text-gray-600 text-xs md:text-sm">1 MIN READ</p>
+              </div>
+            </div>
+          </div>
+
+          <% end %>
+
+          <% end) %>
 
 				</div>
 				<!--/ Post Content-->
@@ -256,7 +283,7 @@
 						<p class="text-gray-600 text-xs md:text-base">Blah-blah</p>
 					</div> -->
 					<div class="">
-						<button class="bg-transparent border border-gray-500 hover:border-green-500 text-xs text-gray-500 hover:text-green-500 font-bold py-2 px-4 rounded-full">Load more</button>
+						<button phx-click="load-more" phx-disable-with="loading..." class="bg-transparent border border-gray-500 hover:border-green-500 text-xs text-gray-500 hover:text-green-500 font-bold py-2 px-4 rounded-full">Load more</button>
 					</div>
 
 				</div>

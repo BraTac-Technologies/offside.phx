@@ -18,7 +18,12 @@ defmodule OffsidePhx.Posts do
 
   """
   def list_posts do
-    query = from(p in Post, order_by: [desc: p.inserted_at])
+    query = from(p in Post, limit: 8, order_by: [desc: p.inserted_at])
+    Repo.all(query)
+  end
+
+  def list_posts_more(limit) do    
+    query = from(p in Post, limit: ^limit, order_by: [desc: p.inserted_at])
     Repo.all(query)
   end
 
