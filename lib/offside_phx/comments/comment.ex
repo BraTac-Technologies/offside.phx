@@ -1,10 +1,11 @@
 defmodule OffsidePhx.Comments.Comment do
   use Ecto.Schema
   import Ecto.Changeset
+  alias OffsidePhx.Posts.Post
 
   schema "comments" do
     field :author, :string
-    field :posts, :string
+    belongs_to :post, Tag
     field :text, :string
 
     timestamps()
@@ -13,7 +14,7 @@ defmodule OffsidePhx.Comments.Comment do
   @doc false
   def changeset(comment, attrs) do
     comment
-    |> cast(attrs, [:posts, :author, :text])
-    |> validate_required([:posts, :author, :text])
+    |> cast(attrs, [:post_id, :author, :text])
+    |> validate_required([:author, :text])
   end
 end
