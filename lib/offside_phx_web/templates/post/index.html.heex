@@ -234,7 +234,7 @@
               <%= link to: Routes.live_path(@socket, OffsidePhxWeb.PostShowLive, post), class: "flex flex-wrap no-underline hover:no-underline" do %>
                 <!-- <img src="https://source.unsplash.com/collection/225/800x600" class="h-64 w-full rounded-t pb-6"> -->
                 <%= img_tag OffsidePhx.BannerUploader.url({post.banner, post}, signed: true, class: "h-full w-full shadow"), class: "h-64 w-full rounded-t pb-6" %>
-                <p class="w-full text-gray-600 text-xs md:text-sm px-6"><%= if post.tag do post.tag.name else "TBA" end %></p>
+                <p class="w-full text-gray-600 text-xs md:text-sm px-6">TBA</p>
                 <div class="w-full font-bold text-xl text-gray-900 px-6"><%= post.title %></div>
                 <p class="text-gray-800 font-serif text-base px-6 mb-5">
                   <%= post.info %>

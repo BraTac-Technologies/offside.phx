@@ -14,14 +14,16 @@ defmodule OffsidePhxWeb.PostShowLive do
 
   def mount(params, _, socket) do
     post = Posts.get_post!(params["id"]) |> Repo.preload(:tag)
-    last3_posts = Posts.get_last_3_posts()
+    last3_posts = Posts.get_last_3_posts() |> Repo.preload(:tag)
     changeset = Comments.change_comment(%Comment{})
     comments = Comments.list_comments_by_post(post)
+    tags = Tags.list_tags()
     socket = assign(
         socket,
         post: post,
         last3_posts: last3_posts,
         comments: comments,
+        tags: tags,
         changeset: changeset
       )
 
