@@ -19,7 +19,7 @@ defmodule OffsidePhxWeb.Router do
 
     get "/", PageController, :index
     get "/admin", PageController, :admin
-    resources "/posts", PostController, except: [:index]
+    resources "/posts", PostController, except: [:index, :show]
     resources "/tags", TagController
   end
 
@@ -27,6 +27,7 @@ defmodule OffsidePhxWeb.Router do
     pipe_through :browser
 
     live "/posts", PostLive
+    live "/post_live/:id", PostShowLive
   end
 
   # Other scopes may use custom stacks.

@@ -7,6 +7,7 @@ defmodule OffsidePhx.Comments do
   alias OffsidePhx.Repo
 
   alias OffsidePhx.Comments.Comment
+  alias OffsidePhx.Posts.Post
 
   @doc """
   Returns the list of comments.
@@ -19,6 +20,12 @@ defmodule OffsidePhx.Comments do
   """
   def list_comments do
     Repo.all(Comment)
+  end
+
+  def list_comments_by_post(%Post{} = post) do
+    post_id = post.id
+    query = from(c in Comment, where: c.post_id == ^post_id)
+    Repo.all(query)
   end
 
   @doc """
