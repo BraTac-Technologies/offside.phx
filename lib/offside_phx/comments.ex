@@ -24,7 +24,7 @@ defmodule OffsidePhx.Comments do
 
   def list_comments_by_post(%Post{} = post) do
     post_id = post.id
-    query = from(c in Comment, where: c.post_id == ^post_id)
+    query = from(c in Comment, where: c.post_id == ^post_id, order_by: [desc: c.inserted_at])
     Repo.all(query)
   end
 
