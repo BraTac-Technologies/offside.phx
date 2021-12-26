@@ -22,14 +22,15 @@
 	<nav class="bg-gray-900 p-4 mt-0 w-full">
         <div class="container mx-auto flex items-center">
 		    <div class="flex text-white font-extrabold">
-				<a class="flex text-white text-base no-underline hover:text-white hover:no-underline" href="#">
-					 <span class="">Offside24.net</span>
-				</a>
+          <%= link to: Routes.live_path(@socket, OffsidePhxWeb.PostLive), class: "flex text-white text-base no-underline hover:text-white hover:no-underline" do %>
+           <span class="">Offside24.net</span>
+          <% end %>
+
             </div>
 			<div class="flex pl-4 text-sm">
 				<ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
 				  <li class="mr-2">
-					<a class="inline-block py-2 px-2 text-white no-underline" href="/posts">Home</a>
+          <%= link "HOME", to: Routes.live_path(@socket, OffsidePhxWeb.PostLive), class: "inline-block py-2 px-2 text-white no-underline" %>
 				  </li>
 
           <%= for tag <- @tags do %>
@@ -258,24 +259,18 @@
 
 			<div class="w-full mx-auto flex flex-wrap items-center">
 				<div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
-					<a class="text-gray-900 no-underline hover:text-gray-900 hover:no-underline" href="#">
+          <%= link to: Routes.live_path(@socket, OffsidePhxWeb.PostLive), class: "text-gray-900 no-underline hover:text-gray-900 hover:no-underline" do %>
 						<span class="text-base text-gray-200">Offside24.net</span>
-					</a>
+					<% end %>
 				</div>
 				<div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
 					<ul class="list-reset flex justify-center flex-1 md:flex-none items-center">
+
 					  <li>
-						<a class="inline-block py-2 px-3 text-white no-underline" href="index.html">HOME</a>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" target="_blank" href="https://bratac.net">© Copyright Offside24.net 2019-2022 <br> FullStack development by Bratac.net</a>
 					  </li>
-					  <li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">link</a>
-					  </li>
-					  <li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">link</a>
-					  </li>
-						<li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">link</a>
-					  </li>
+
+
 					</ul>
 				</div>
 			</div>
