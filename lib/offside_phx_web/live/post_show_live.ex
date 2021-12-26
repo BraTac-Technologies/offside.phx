@@ -33,6 +33,12 @@ defmodule OffsidePhxWeb.PostShowLive do
 
     case Comments.create_comment(attrs) do
       {:ok, comment} ->
+        socket =
+          update(
+          socket,
+          :comments,
+          fn comments -> [ comment | comments ] end
+          )
 
         changeset = Comments.change_comment(%Comment{})
         socket = put_flash(socket, :success, "Comment added successfully!")
