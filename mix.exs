@@ -51,7 +51,8 @@ defmodule OffsidePhx.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:phx_gen_tailwind, "~> 0.1.3", only: :dev},
       {:waffle, "~> 1.1.5"},
-      {:waffle_ecto, "~> 0.0.11"}
+      {:waffle_ecto, "~> 0.0.11"},
+      {:nimble_strftime, "~> 0.1.1"}
     ]
   end
 

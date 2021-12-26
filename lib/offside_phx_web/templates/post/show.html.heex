@@ -183,9 +183,10 @@ Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
             <div class="antialiased mx-auto max-w-screen-sm">
               <h3 class="mb-4 text-lg font-semibold text-gray-900">All Comments</h3>
 
-              <div id="comments" phx-update="prepend" class="space-y-4">
+              <div id="comments" phx-update="append" class="space-y-4">
 
-                <%= for comment <- @comments do %>
+
+                <%= @comments |> Enum.with_index |> Enum.map(fn({comment, index}) ->  %>
 
                 <div id={"#{comment.id}"} class="flex">
                   <div class="flex-shrink-0 mr-3">
@@ -193,7 +194,7 @@ Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
                   </div>
                   <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
                     <strong><%= comment.author %></strong>
-                    <!-- <span class="text-xs text-gray-400">3:34 PM</span> -->
+                    <span class="text-xs text-gray-600"><%= NimbleStrftime.format(comment.inserted_at, "%H:%M | %d.%m.%y") %></span>
                     <p class="text-sm">
                       <%= comment.text %>
                     </p>
@@ -211,11 +212,11 @@ Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
 
 
 
-                <% end %>
+                <% end) %>
 
 
               </div>
-            
+
             </div>
 
 
