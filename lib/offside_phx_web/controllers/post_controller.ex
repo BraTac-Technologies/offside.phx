@@ -5,6 +5,8 @@ defmodule OffsidePhxWeb.PostController do
   alias OffsidePhx.Posts.Post
   alias OffsidePhx.Tags
   alias OffsidePhx.Repo
+  alias OffsidePhx.Comments
+  alias OffsidePhx.Comments.Comment
 
   def index(conn, _params) do
     posts = Posts.list_posts()
@@ -32,7 +34,8 @@ defmodule OffsidePhxWeb.PostController do
   def show(conn, %{"id" => id}) do
     post = Posts.get_post!(id) |> Repo.preload(:tag)
     last3_posts = Posts.get_last_3_posts()
-    render(conn, "show.html", post: post, last3_posts: last3_posts)
+    changeset = Comments.change_comment(%Comment{})
+    render(conn, "show.html", post: post, last3_posts: last3_posts, changeset: changeset)
   end
 
   def edit(conn, %{"id" => id}) do
