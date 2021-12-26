@@ -1,103 +1,135 @@
 
-  <%= form_for @changeset, @action, [multipart: true], fn f -> %>
-<%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
-    </div>
-  <% end %>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
-    <div>
-      <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">
-          Profile
-        </h3>
-        <p class="mt-1 max-w-2xl text-sm text-gray-500">
-          This information will be displayed publicly so be careful what you share.
-        </p>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-      <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-            Title
-          </label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <%= text_input f, :title, class: " bg-gray-200 max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-red-300 rounded-md" %>
-          </div>
-        </div>
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-            Info
-          </label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <%= text_input f, :info, class: " bg-gray-200 max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-red-300 rounded-md" %>
-          </div>
-        </div>
+		<meta name="author" content="name">
+    <meta name="description" content="description here">
+		<meta name="keywords" content="keywords,here">
+		<link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet"> <!--Replace with your tailwind.css once created-->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet">
+	<style>
+	.smooth {transition: box-shadow 0.3s ease-in-out;}
+	::selection{background-color: aliceblue}
+	</style>
+</head>
+<body class="bg-gray-200 font-sans leading-normal tracking-normal">
 
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="about" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-            About
-          </label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <%= textarea f, :text, class: "max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md" %>
-
-            <p class="mt-2 text-sm text-gray-500">Write a few sentences about yourself.</p>
-          </div>
-        </div>
-
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-            Choose Tag
-          </label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <%= select(f, :tag_id, Enum.map(@tags, &{&1.name, &1.id}), prompt: [key: "Choose a tag"], class: "text-center block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500") %>
-          </div>
-        </div>
-
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-            Upload banner
-          </label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            
-          </div>
-        </div>
-
-
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="cover-photo" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-            Cover photo
-          </label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <div class="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-              <div class="space-y-1 text-center">
-                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                  <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                <div class="flex text-sm text-gray-600">
-                  <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                    <span>Upload a file</span>
-                    <%= file_input f, :banner, class: "" %>
-
-                  </label>
-                  <p class="pl-1">or drag and drop</p>
-                </div>
-                <p class="text-xs text-gray-500">
-                  PNG, JPG, GIF up to 10MB
-                </p>
-              </div>
+	<!--Nav-->
+	<nav class="bg-gray-900 p-4 mt-0 w-full">
+        <div class="container mx-auto flex items-center">
+		    <div class="flex text-white font-extrabold">
+				<a class="flex text-white text-base no-underline hover:text-white hover:no-underline" href="#">
+					 <span class="">Offside24.net</span>
+				</a>
             </div>
-          </div>
+			<div class="flex pl-4 text-sm">
+				<ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+				  <li class="mr-2">
+					<a class="inline-block py-2 px-2 text-white no-underline" href="/posts">HOME</a>
+				  </li>
+				  <li class="mr-2">
+					<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-2" href="#">LINK</a>
+				  </li>
+				  <li class="mr-2">
+					<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-2" href="#">LINK</a>
+				  </li>
+					<li class="mr-2">
+					<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-2" href="#">LINK</a>
+				  </li>
+				</ul>
+			</div>
         </div>
-      </div>
+	</nav>
+
+	<!--slide in nav-->
+	<div id="header" class="bg-white fixed w-full z-10 top-0 hidden animated" style="opacity: .95;">
+		<div class="bg-white">
+			<div class="flex flex-wrap items-center content-center">
+				<div class="flex w-1/2 justify-start text-white font-extrabold">
+					<a class="flex text-gray-900 no-underline hover:text-gray-900 hover:no-underline pl-2" href="#">
+						Offside24.net
+					</a>
+				</div>
+				<div class="flex w-1/2 justify-end content-center">
+					  <p class=" mr-3 text-center h-14 p-4 text-xs"><span class="pr-2">Share now</span> 👉</p>
+						<a class="inline-block text-white no-underline hover:text-white hover:text-underline text-center h-10 w-10 p-2 md:h-auto md:w-16 md:p-4" href="https://twitter.com/intent/tweet?url=#" style="background-color:#33b1ff;">
+							<svg class="fill-current text-white h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+						</a>
+						<a class="inline-block text-white no-underline hover:text-white hover:text-underline text-center h-10 w-10 p-2 md:h-auto md:w-16 md:p-4" href="https://www.facebook.com/sharer/sharer.php?u=#" style="background-color:#005e99">
+							<svg class="fill-current text-white h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"></path></svg>
+						</a>
+				</div>
+			</div>
+
+		</div>
+		<!--Progress bar-->
+		<div id="progress" class="h-1 bg-white shadow" style="background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);"></div>
     </div>
 
-  </div>
+    <%= form_for @changeset, @action, [multipart: true], fn f -> %>
 
-  <div class="pt-5">
-    <div class="flex justify-end">
+    <%= if @changeset.action do %>
+        <div class="alert alert-danger">
+          <p>Oops, something went wrong! Please check the errors below.</p>
+        </div>
+      <% end %>
+
+
+	<!--Title-->
+	<div class="text-center pt-16 md:pt-32">
+
+      <p class="text-sm md:text-base text-green-500 font-bold"><%= select(f, :tag_id, Enum.map(@tags, &{&1.name, &1.id}), prompt: [key: "Choose a tag"]) %></p>
+
+    <h1 class="font-b old break-normal text-3xl md:text-5xl"><%= text_input f, :title %></h1>
+
+	</div>
+
+	<!--image-->
+	<!-- <div class="container shadow-inner w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded" style="background-image:url('https://source.unsplash.com/collection/494263/800x600/'); height: 75vh;"></div> -->
+  <div class="container shadow-inner w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded" style={"background-image:url(https://m.media-amazon.com/images/M/MV5BMTg1MjUyMzAyNF5BMl5BanBnXkFtZTgwNjczMjU2MzE@._V1_.jpg); height: 75vh;"}></div>
+
+
+ <%# img_tag OffsidePhx.BannerUploader.url({@post.banner, @post}, signed: true) %>
+
+	<!--Container-->
+	<div class="container max-w-5xl mx-auto -mt-32">
+
+		<div class="mx-0 sm:mx-6">
+
+			<div class="bg-gray-100 shadow-2xl w-full p-8 md:p-24 text-xl md:text-2xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
+
+				<!--Post Content-->
+
+
+				<!--Lead Para-->
+				<p class="text-2xl md:text-3xl mb-5">
+          info <br>
+					<%= textarea f, :info %>
+
+				</p>
+        text <br>
+				<p class="py-6"><%= textarea f, :text %>
+</p>
+
+      <%= file_input f, :banner, class: "" %>
+			</div>
 
       <%= submit "Save", class: "ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-    </div>
-  </div>
+
+		</div>
+
+
+	</div>
+
+
 <% end %>
+
+
+
+
+</body>
+</html>
