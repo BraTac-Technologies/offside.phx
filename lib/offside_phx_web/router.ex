@@ -20,10 +20,7 @@ defmodule OffsidePhxWeb.Router do
   scope "/", OffsidePhxWeb do
     pipe_through :browser
 
-    
-    get "/admin", PageController, :admin
-    resources "/posts", PostController, except: [:index, :show]
-    resources "/tags", TagController
+    resources "/tags", TagController, only: [:show]
   end
 
   scope "/", OffsidePhxWeb do
@@ -84,6 +81,10 @@ defmodule OffsidePhxWeb.Router do
 
   scope "/", OffsidePhxWeb do
     pipe_through [:browser, :require_authenticated_admin]
+
+    resources "/posts", PostController, except: [:index, :show]
+    resources "/tags", TagController, except: [:show]
+    get "/admin", PageController, :admin
 
     get "/admins/settings", AdminSettingsController, :edit
     put "/admins/settings", AdminSettingsController, :update
