@@ -47,7 +47,7 @@
 	<div id="header" class="bg-white fixed w-full z-10 top-0 hidden animated" style="opacity: .95;">
 		<div class="bg-white">
 			<div class="flex flex-wrap items-center content-center">
-				<div class="flex w-1/2 justify-start text-white font-extrabold">					
+				<div class="flex w-1/2 justify-start text-white font-extrabold">
           <%= link to: Routes.live_path(@socket, OffsidePhxWeb.PostLive), class: "flex text-gray-900 no-underline hover:text-gray-900 hover:no-underline pl-2" do %>
             Offside24.net
 					<% end %>
@@ -71,7 +71,7 @@
 
 	<!--Title-->
 	<div class="text-center pt-16 md:pt-32">
-      <p class="text-sm md:text-base text-green-500 font-bold">21 JANUARY 2021 <span class="text-gray-900">/ </span><%= if @post.tag do @post.tag.name else "TBA" end %></p>
+      <p class="text-sm md:text-base text-green-500 font-bold"><%= NimbleStrftime.format(@post.inserted_at, "%d %b %Y") %> <span class="text-gray-900">/ </span><%= if @post.tag do @post.tag.name else "TBA" end %></p>
     <h1 class="font-bold break-normal text-3xl md:text-5xl"><%= @post.title %></h1>
 
 	</div>
