@@ -7,6 +7,7 @@ defmodule OffsidePhx.Posts do
   alias OffsidePhx.Repo
 
   alias OffsidePhx.Posts.Post
+  alias OffsidePhx.Tags.Tag
 
   @doc """
   Returns the list of posts.
@@ -17,12 +18,24 @@ defmodule OffsidePhx.Posts do
       [%Post{}, ...]
 
   """
+
+  def list_posts_default do
+    query = from(p in Post, order_by: [desc: p.inserted_at])
+    Repo.all(query)
+  end
+
   def list_posts do
     query = from(p in Post, limit: 8, order_by: [desc: p.inserted_at])
     Repo.all(query)
   end
 
-  def list_posts_more(limit) do    
+  def list_posts_by_tag(%Tag{} = tag) do
+    tag_id = tag.id
+    query = from(p in Post, where: p.tag_id == ^tag_id)
+    Repo.all(query)
+  end
+
+  def list_posts_more(limit) do
     query = from(p in Post, limit: ^limit, order_by: [desc: p.inserted_at])
     Repo.all(query)
   end

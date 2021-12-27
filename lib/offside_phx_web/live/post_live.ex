@@ -11,7 +11,7 @@ defmodule OffsidePhxWeb.PostLive do
   end
 
   def mount(params, _, socket) do
-    posts = Posts.list_posts()
+    posts = Posts.list_posts() |> Repo.preload(:tag)
     tags = Tags.list_tags()
     socket = assign(
         socket,

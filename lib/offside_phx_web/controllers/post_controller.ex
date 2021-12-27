@@ -16,7 +16,8 @@ defmodule OffsidePhxWeb.PostController do
 
   def new(conn, _params) do
     changeset = Posts.change_post(%Post{})
-    render(conn, "new.html", changeset: changeset)
+    tags = Tags.list_tags()
+    render(conn, "new.html", changeset: changeset, tags: tags)
   end
 
   def create(conn, %{"post" => post_params}) do
@@ -24,7 +25,7 @@ defmodule OffsidePhxWeb.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
-        |> redirect(to: Routes.post_path(conn, :show, post))
+        |> redirect(to: Routes.page_path(conn, :admin))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -52,7 +53,7 @@ defmodule OffsidePhxWeb.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post updated successfully.")
-        |> redirect(to: Routes.post_path(conn, :show, post))
+        |> redirect(to: Routes.page_path(conn, :admin))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", post: post, changeset: changeset)
@@ -65,6 +66,6 @@ defmodule OffsidePhxWeb.PostController do
 
     conn
     |> put_flash(:info, "Post deleted successfully.")
-    |> redirect(to: Routes.post_path(conn, :index))
+    |> redirect(to: Routes.page_path(conn, :admin))
   end
 end
