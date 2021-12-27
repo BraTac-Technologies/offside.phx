@@ -35,10 +35,7 @@
 					<div class="container mx-auto flex items-center">
 
 						<div class="flex w-1/2 pl-4 text-sm">
-							<ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
-								<li class="mr-2">
-								<a class="inline-block py-2 px-2 text-white no-underline hover:underline" href="/admin">ADMIN</a>
-								</li>
+							<ul class="list-reset flex justify-between flex-1 md:flex-none items-center">								
                 <%= for tag <- @tags do %>
 								<li class="mr-2">
                 <%= link tag.name, to: Routes.tag_path(@socket, :show, tag), class: "inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-2" %>
