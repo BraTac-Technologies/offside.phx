@@ -3,6 +3,7 @@ defmodule OffsidePhxWeb.TagController do
 
   alias OffsidePhx.Tags
   alias OffsidePhx.Tags.Tag
+  alias OffsidePhx.Posts
 
   def index(conn, _params) do
     tags = Tags.list_tags()
@@ -28,7 +29,9 @@ defmodule OffsidePhxWeb.TagController do
 
   def show(conn, %{"id" => id}) do
     tag = Tags.get_tag!(id)
-    render(conn, "show.html", tag: tag)
+    posts_by_tag = Posts.list_posts_by_tag(tag)
+    tags = Tags.list_tags()    
+    render(conn, "show.html", tag: tag, posts_by_tag: posts_by_tag, tags: tags)
   end
 
   def edit(conn, %{"id" => id}) do
