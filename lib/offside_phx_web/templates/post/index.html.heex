@@ -78,7 +78,7 @@
 								<div class="w-full font-bold text-xl text-gray-900 px-6"><%= post.title %></div>
                 <br>
                 <p class="text-gray-800 font-serif text-base px-6 mb-5">
-									<%= post.info %>
+									<%= raw post.info %>
 								</p>
 							</div>
 
@@ -118,7 +118,7 @@
 								<p class="w-full text-gray-600 text-xs md:text-sm px-6"><%= if post.tag do post.tag.name else "TBA" end %></p>
 								<div class="w-full font-bold text-xl text-gray-900 px-6"><%= post.title %></div>
 								<p class="text-gray-800 font-serif text-base px-6 mb-5">
-									<%= post.info %>
+									<%= raw post.info %>
 								</p>
 							<% end %>
 						</div>
@@ -153,7 +153,7 @@
                 <p class="w-full text-gray-600 text-xs md:text-sm px-6"><%= if post.tag do post.tag.name else "TBA" end %></p>
 								<div class="w-full font-bold text-xl text-gray-900 px-6"><%= post.title %></div>
 								<p class="text-gray-800 font-serif text-base px-6 mb-5">
-									<%= post.info %>
+									<%= raw post.info %>
 								</p>
 							<% end %>
 						</div>
@@ -181,7 +181,7 @@
                 <p class="w-full text-gray-600 text-xs md:text-sm px-6"><%= if post.tag do post.tag.name else "TBA" end %></p>
 								<div class="w-full font-bold text-xl text-gray-900 px-6"><%= post.title %></div>
 								<p class="text-gray-800 font-serif text-base px-6 mb-5">
-									<%= post.info %>
+									<%= raw post.info %>
 								</p>
 							<% end %>
 						</div>
@@ -206,7 +206,7 @@
                 <p class="w-full text-gray-600 text-xs md:text-sm px-6"><%= if post.tag do post.tag.name else "TBA" end %></p>
 								<div class="w-full font-bold text-xl text-gray-900 px-6"><%= post.title %></div>
 								<p class="text-gray-800 font-serif text-base px-6 mb-5">
-									<%= post.info %>
+									<%= raw post.info %>
 								</p>
 							<% end %>
 						</div>
@@ -234,7 +234,7 @@
                 <p class="w-full text-gray-600 text-xs md:text-sm px-6">TBA</p>
                 <div class="w-full font-bold text-xl text-gray-900 px-6"><%= post.title %></div>
                 <p class="text-gray-800 font-serif text-base px-6 mb-5">
-                  <%= post.info %>
+                  <%= raw post.info %>
                 </p>
               <% end %>
             </div>
