@@ -4,6 +4,7 @@ defmodule OffsidePhx.Tags.Tag do
 
   schema "tags" do
     field :name, :string
+    field :info, :string
 
     timestamps()
   end
@@ -11,7 +12,7 @@ defmodule OffsidePhx.Tags.Tag do
   @doc false
   def changeset(tag, attrs) do
     tag
-    |> cast(attrs, [:name])
-    |> validate_required([:name])
+    |> cast(attrs, [:name, :info])
+    |> validate_required([:name, :info])
   end
 end
