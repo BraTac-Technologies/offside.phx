@@ -64,11 +64,7 @@
 		<div id="progress" class="h-1 bg-white shadow" style="background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);"></div>
     </div>
 
-
-    <script>
-      var url = window.location.href;
-    </script>
-
+    
 	<!--Title-->
 	<div class="text-center pt-16 md:pt-32">
       <p class="text-sm md:text-base text-green-500 font-bold"><%= NimbleStrftime.format(@post.inserted_at, "%d %b %Y") %> <span class="text-gray-900">/ </span><%= if @post.tag do @post.tag.name else "TBA" end %></p>
