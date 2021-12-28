@@ -15,18 +15,18 @@
 <body class="bg-gray-200 font-sans leading-normal tracking-normal">
 
 	<!--Header-->
-	<div class="w-full m-0 p-0 bg-cover bg-bottom" style="background-image:url('cover.jpg'); height: 60vh; max-height:460px;">
-			<div class="container max-w-4xl mx-auto pt-16 md:pt-32 text-center break-normal">
-				<!--Title-->
-					<p class="text-black font-extrabold text-3xl md:text-5xl">
-						Offside24.net
-					</p>
-					<p class="text-xl md:text-2xl text-gray-500">Welcome!</p>
-			</div>
-	</div>
+  <div class="w-full m-0 p-0 relative" style="height: 60vh; max-height:460px;">
+      <div class="absolute inset-0 bg-center bg-cover blur-sm" style="background-image:url('/uploads/wtt2.jpeg');"></div>
+      <div class="relative container max-w-4xl mx-auto pt-16 md:pt-32 text-center break-normal">
+        <!--Title-->
+        <p class="text-white font-extrabold custom-font-offside text-3xl md:text-5xl">Offside24.net</p>
+        <br>
+        <p class="text-xl md:text-2xl text-white custom-font-offside">Българският сайт за тенис на маса</p>
+      </div>
+    </div>
 
 		<!--Container-->
-		<div class="container px-4 md:px-0 max-w-6xl mx-auto -mt-32">
+		<div class="container px-4 md:px-0 max-w-6xl mx-auto -mt-32 relative">
 
 			<div class="mx-0 sm:mx-6">
 
@@ -38,7 +38,7 @@
 							<ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
                 <%= for tag <- @tags do %>
 								<li class="mr-2">
-                <%= link tag.name, to: Routes.tag_path(@socket, :show, tag), class: "inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-2" %>
+                <%= link tag.name, to: Routes.tag_path(@socket, :show, tag), class: "inline-block text-white no-underline hover:text-gray-200 hover:underline py-2 px-2" %>
 								</li>
 								<% end %>
 							</ul>
