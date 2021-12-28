@@ -19,9 +19,9 @@ config :logger, level: :info
 # To get SSL working, you will need to add the `https` key
 # to the previous section and set your `:url` port to 443:
 #
+
 config :offside_phx, OffsidePhxWeb.Endpoint,
-  url: [schema: "https", host: "offside24.net", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  url: [scheme: "https", host: "www.offside24.net", port: 443]
 
 #
 # The `cipher_suite` is set to `:strong` to support only the
