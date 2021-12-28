@@ -20,7 +20,7 @@ config :logger, level: :info
 # to the previous section and set your `:url` port to 443:
 #
 config :offside_phx, OffsidePhxWeb.Endpoint,
-  url: [host: "offside24.net", port: 80],
+  url: [host: "https://www.offside24.net", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 #
