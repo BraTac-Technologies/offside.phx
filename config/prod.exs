@@ -21,7 +21,7 @@ config :logger, level: :info
 #
 
 config :offside_phx, OffsidePhxWeb.Endpoint,
-  url: [scheme: "https", host: "www.offside24.net", port: 443]
+  url: [scheme: "https", host: "offside24.net", port: 443]
 
 #
 # The `cipher_suite` is set to `:strong` to support only the
