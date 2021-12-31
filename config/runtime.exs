@@ -41,7 +41,7 @@ if config_env() == :prod do
       """
 
   host = System.get_env("PHX_HOST") || "offside24.net"
-  port = String.to_integer(System.get_env("PORT") || "4000")
+  port = String.to_integer(System.get_env("PORT") || "5000")
 
   config :offside_phx, OffsidePhxWeb.Endpoint,
     url: [host: host, port: 443],
